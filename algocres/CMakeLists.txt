@@ -1,3 +1,5 @@
+# One CMakeLists.txt per project (lib)
+
 add_library(
 	algocres
 )
