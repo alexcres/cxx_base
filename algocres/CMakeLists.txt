@@ -25,6 +25,10 @@ target_include_directories(
 	"${CMAKE_CURRENT_SOURCE_DIR}/src"
 )
 
+# can use INTERFACE_INCLUDE_DIRECTORIES populated by target_include_directories
+# better to use FILES, and manually add files, so cmake can properly reload
+# install(DIRECTORY include/algocres/ DESTINATION include/algocres/)
+
 # gtest
 enable_testing()
 #find_package(GTest REQUIRED)
