@@ -31,7 +31,7 @@ target_include_directories(
 
 # gtest
 enable_testing()
-#find_package(GTest REQUIRED)
+find_package(GTest REQUIRED)
 add_executable(algocres_tests)
 target_sources(
 	algocres_tests
@@ -39,4 +39,13 @@ target_sources(
 	PRIVATE
 	test/stack_tests.cxx
 )
-target_link_libraries(algocres_tests gtest_main algocres)
+target_link_libraries(algocres_tests GTest::GTest GTest::Main algocres)
+
+# require when working with threads
+find_package(Threads REQUIRED)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+add_executable(
+	main
+	main.cpp)
+#SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++17 -pthread")
+target_link_libraries(main algocres Threads::Threads)
